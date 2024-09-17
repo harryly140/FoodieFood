@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TestService } from '../../services/test.service';
 import { FoodishAPIImageTest } from 'src/app/interfaces/FoodishAPIImageTest';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-harry',
@@ -11,6 +12,7 @@ export class HarryComponent implements OnInit, OnDestroy {
   testImage: FoodishAPIImageTest = {
     image: ''
   };
+  private unsubscribe = new Subject<void>();
   
   constructor(private service: TestService) { }
   
@@ -21,7 +23,9 @@ export class HarryComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Unsubscribe to prevent extra memory usage
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }
