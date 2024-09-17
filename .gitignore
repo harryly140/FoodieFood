@@ -1,0 +1,18 @@
+# Build Directories
+target/
+dist/
+
+# Logging
+
+# NodeJS
+node/
+node_modules
+
+# IntelliJ
+.idea/
+insight.iml
+
+# Config
+
+# VS Code
+.vscode/
